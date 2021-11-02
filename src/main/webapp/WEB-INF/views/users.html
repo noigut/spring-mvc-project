@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users page</title>
+    <style>
+        h1{
+            color: blue;
+        }
+    </style>
+
+    <style>
+        a.button10 {
+            display: inline-block;
+            color: #f7fafa;
+            font-size: 100%;
+            font-weight: 700;
+            text-decoration: none;
+            user-select: none;
+            padding: .25em .5em;
+            outline: none;
+            border: 1px solid rgb(250,172,17);
+            border-radius: 7px;
+            background: rgb(255,212,3) linear-gradient(rgb(255,212,3), rgb(248,157,23));
+            box-shadow: inset 0 -2px 1px rgba(0,0,0,0), inset 0 1px 2px rgba(0,0,0,0), inset 0 0 0 60px rgba(255,255,0,0);
+            transition: box-shadow .2s, border-color .2s;
+        }
+        a.button10:hover {
+            box-shadow: inset 0 -1px 1px rgba(0,0,0,0), inset 0 1px 2px rgba(0,0,0,0), inset 0 0 0 60px rgba(255,255,0,.5);
+        }
+        a.button10:active {
+            padding: calc(.25em + 1px) .5em calc(.25em - 1px);
+            border-color: rgba(177,159,0,1);
+            box-shadow: inset 0 -1px 1px rgba(0,0,0,.1), inset 0 1px 2px rgba(0,0,0,.3), inset 0 0 0 60px rgba(255,255,0,.45);
+        }
+    </style>
+
+    <style>
+
+        a.button25 {
+            position: relative;
+            display: inline-block;
+            width: 10em;
+            height: 2.5em;
+            line-height: 2.5em;
+            vertical-align: middle;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 0 -1px 1px #777;
+            color: #fff;
+            outline: none;
+            border: 2px solid #F64C2B;
+            border-radius: 5px;
+            box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+            background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+        }
+        a.button25:active {
+            top: .1em;
+            left: .1em;
+            box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+        }
+    </style>
+
+<!--<style>-->
+<!--  h1 {color: blue}-->
+<!--</style>-->
+    <style>
+        body{
+            font-family: Mukta, sans-serif;
+            height: 100vh;
+            justify-content: center;
+            font-size: 0.9em;
+        }
+      table {
+        width: 30%;
+        border-collapse: collapse;
+      }
+      td, th {
+        border: 1px solid #98bf21;
+        padding: 3px 7px 2px 7px;
+      }
+      th {
+        text-align: center;
+        padding: 5px;
+        background-color: #A7C942;
+        color: #fff;
+      }
+      .alt td { background-color: #EAF2D3; }
+
+
+    </style>
+
+</head>
+<body>
+
+<h1>Users list</h1>
+<hr>
+
+<table>
+
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Age</th>
+      <th>Optional</th>
+  </tr>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.age}"></td>
+      <td>
+          <a th:href="@{users/delete(id=${user.id})}" class="button10">delete</a>
+          <a th:href="@{users/edit(id=${user.id})}" class="button10" >edit</a>
+      </td>
+  </tr>
+</table>
+
+</hr>
+<br><br>
+<a href="/users/add-user" class="button25">Add new user</a>
+
+</body>
+</html>
